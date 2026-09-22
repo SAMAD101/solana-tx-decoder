@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cf-ai-solana-tx-explainer",
+  "main": "./src/server.ts",
+  "compatibility_date": "2026-09-21",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/agents/*"],
+  },
+  "ai": { "binding": "AI", "remote": true },
+  "durable_objects": {
+    "bindings": [
+      { "name": "TxExplainerAgent", "class_name": "TxExplainerAgent" },
+    ],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["TxExplainerAgent"] }],
+  "workflows": [
+    {
+      "name": "explain-tx",
+      "binding": "EXPLAIN_TX",
+      "class_name": "ExplainTxWorkflow",
+    },
+  ],
+  "observability": { "enabled": true },
+}

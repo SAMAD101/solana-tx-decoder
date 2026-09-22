@@ -1,0 +1,109 @@
+{
+  "transaction": {
+    "signatures": [
+      "5dtQqZivx2pw2Vd3y54Kynm5ixaehutDjWUf5FGjZzuCZxNqV9KL7x1iCemChCexNbaZbUhpuZT3Qwdj7RQA3mt4"
+    ],
+    "message": {
+      "accountKeys": [
+        {
+          "pubkey": "sp1nLqqjVZ1kTusFjJmHp1xHDpH6M4F7KXCr1iJ3xpX",
+          "writable": true,
+          "signer": true,
+          "source": "transaction"
+        },
+        {
+          "pubkey": "6E5o1ZzEwxW7xWwR6YPbYEL53bDpYTtqoQfXLLxXss7j",
+          "writable": true,
+          "signer": false,
+          "source": "transaction"
+        },
+        {
+          "pubkey": "DUGirckBgoaW3zoEPhTVVo68pZpXrTKuJrsLBLWcZQo2",
+          "writable": false,
+          "signer": false,
+          "source": "transaction"
+        },
+        {
+          "pubkey": "EtrnLzgbS7nMMy5fbD42kXiUzGg8XQzJ972Xtk1cjWih",
+          "writable": false,
+          "signer": false,
+          "source": "transaction"
+        },
+        {
+          "pubkey": "GdxfTLSsdSY37G6fZoYtdGDSfgFnbT2EmRpuePZxWShS",
+          "writable": false,
+          "signer": false,
+          "source": "transaction"
+        }
+      ],
+      "recentBlockhash": "Hr7Z1BhU2LJ7UjfbY1KAV2j52vjBghitnJS1CMULctWT",
+      "instructions": [
+        {
+          "programId": "EtrnLzgbS7nMMy5fbD42kXiUzGg8XQzJ972Xtk1cjWih",
+          "accounts": [
+            "EtrnLzgbS7nMMy5fbD42kXiUzGg8XQzJ972Xtk1cjWih",
+            "GdxfTLSsdSY37G6fZoYtdGDSfgFnbT2EmRpuePZxWShS",
+            "sp1nLqqjVZ1kTusFjJmHp1xHDpH6M4F7KXCr1iJ3xpX",
+            "DUGirckBgoaW3zoEPhTVVo68pZpXrTKuJrsLBLWcZQo2",
+            "6E5o1ZzEwxW7xWwR6YPbYEL53bDpYTtqoQfXLLxXss7j"
+          ],
+          "data": "4Ms3SMNCkwCCo3eiDAm3ctgkPq4K6cWgvCarn8FPAG99Yr1GvDyY3Ga841D",
+          "stackHeight": 1
+        }
+      ],
+      "transactionConfig": {
+        "priorityFee": 1,
+        "computeUnitLimit": 710,
+        "loadedAccountsDataSizeLimit": 10000000,
+        "heapSize": null
+      }
+    }
+  },
+  "meta": {
+    "err": {
+      "InstructionError": [
+        0,
+        "InvalidInstructionData"
+      ]
+    },
+    "status": {
+      "Err": {
+        "InstructionError": [
+          0,
+          "InvalidInstructionData"
+        ]
+      }
+    },
+    "fee": 5001,
+    "preBalances": [
+      116056777016,
+      29566080,
+      38196480,
+      1241441,
+      0
+    ],
+    "postBalances": [
+      116056772015,
+      29566080,
+      38196480,
+      1241441,
+      0
+    ],
+    "innerInstructions": [],
+    "logMessages": [
+      "Program EtrnLzgbS7nMMy5fbD42kXiUzGg8XQzJ972Xtk1cjWih invoke [1]",
+      "Program log: user_price_sequence_number must be strictly greater than stored value",
+      "Program EtrnLzgbS7nMMy5fbD42kXiUzGg8XQzJ972Xtk1cjWih consumed 556 of 710 compute units",
+      "Program EtrnLzgbS7nMMy5fbD42kXiUzGg8XQzJ972Xtk1cjWih failed: invalid instruction data"
+    ],
+    "preTokenBalances": [],
+    "postTokenBalances": [],
+    "rewards": [],
+    "computeUnitsConsumed": 556,
+    "costUnits": 2710
+  },
+  "version": 1,
+  "slot": 449292901,
+  "transactionIndex": 142,
+  "blockTime": 1790057223
+}

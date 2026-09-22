@@ -1,0 +1,475 @@
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --muted: #6b6b6b;
+  --faint: #e6e6e6;
+  --line: #111111;
+  --accent: #0057ff;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #f2f2f2;
+    --muted: #8d8d8d;
+    --faint: #262626;
+    --line: #f2f2f2;
+    --accent: #6ea8ff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.5 ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-x: hidden;
+}
+
+/* ---- boxes ---- */
+
+.box {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 12px;
+  min-width: 0;
+}
+
+h1,
+h2,
+summary {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 12px 0 6px;
+}
+
+h2 + h3 {
+  margin-top: 0;
+}
+
+p {
+  margin: 0;
+}
+
+header p,
+.muted {
+  color: var(--muted);
+}
+
+.label {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---- input ---- */
+
+.input-box .label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.input-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--bg);
+}
+
+.input-row input:focus-visible,
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: var(--bg);
+  color: var(--muted);
+  border-color: var(--muted);
+  cursor: not-allowed;
+}
+
+.inline-error {
+  margin-top: 6px;
+}
+
+.inline-error::before {
+  content: "! ";
+  font-weight: 700;
+}
+
+.input-box .muted {
+  margin-top: 6px;
+}
+
+/* ---- progress ---- */
+
+.progress {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress ol {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.progress .arrow {
+  margin: 0 8px;
+  color: var(--muted);
+}
+
+.progress .step {
+  padding: 2px 6px;
+  border: 1px solid transparent;
+}
+
+.progress .pending .step {
+  color: var(--muted);
+}
+
+.progress .active .step {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.progress .done .step::after {
+  content: " ✓";
+}
+
+.progress .failed .step {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.progress .failed .step::after {
+  content: " ✕";
+}
+
+/* ---- error: inverted, stays monochrome ---- */
+
+.box.error {
+  background: var(--fg);
+  color: var(--bg);
+  overflow-wrap: anywhere;
+}
+
+.box.error .label {
+  color: var(--bg);
+  font-weight: 700;
+}
+
+/* ---- status text ---- */
+
+.ok {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.bad {
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0 4px;
+  font-weight: 700;
+}
+
+.tag {
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  padding: 0 4px;
+  margin: 0 4px;
+  font-size: 11px;
+}
+
+/* ---- key/value grid ---- */
+
+.kv {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 4px 16px;
+  margin: 0;
+}
+
+.kv > div {
+  display: contents;
+}
+
+.kv dt {
+  color: var(--muted);
+}
+
+.kv dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+/* ---- addresses ---- */
+
+.addr {
+  white-space: nowrap;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 2px;
+}
+
+button.copy {
+  margin-left: 4px;
+  padding: 0 4px;
+  font-size: 11px;
+  background: var(--bg);
+  color: var(--muted);
+  border-color: var(--muted);
+}
+
+button.copy:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+/* ---- tables scroll inside their box ---- */
+
+.table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid var(--faint);
+  padding: 4px 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- instructions ---- */
+
+.ixs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ix {
+  border-left: 1px solid var(--line);
+  padding-left: 8px;
+  min-width: 0;
+}
+
+.ix-index {
+  color: var(--muted);
+}
+
+.ix-info {
+  margin-top: 4px;
+}
+
+code {
+  font: inherit;
+  overflow-wrap: anywhere;
+}
+
+code.json {
+  color: var(--muted);
+}
+
+/* ---- collapsibles ---- */
+
+details > summary {
+  cursor: pointer;
+  margin: 0;
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary::before {
+  content: "+ ";
+}
+
+details[open] > summary::before {
+  content: "- ";
+}
+
+.details-body {
+  margin-top: 8px;
+}
+
+.logs {
+  margin: 0;
+  font: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.logs .err {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* ---- markdown ---- */
+
+.explanation > :not(h2) {
+  margin: 0 0 8px;
+}
+
+.explanation h3 {
+  margin: 12px 0 4px;
+}
+
+.explanation ol,
+.explanation ul {
+  padding-left: 1.5em;
+}
+
+.explanation code {
+  background: var(--faint);
+  padding: 0 3px;
+}
+
+/* ---- recent ---- */
+
+.recent {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recent li + li {
+  border-top: 1px solid var(--faint);
+}
+
+.recent button {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  color: inherit;
+  border: 0;
+  padding: 6px 0;
+}
+
+.recent button:hover:not(:disabled) .recent-summary {
+  text-decoration: underline;
+}
+
+.recent button:disabled {
+  background: none;
+}
+
+.recent-summary {
+  flex: 1 1 20ch;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 8px;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .kv {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .kv dd {
+    margin-bottom: 6px;
+  }
+}
